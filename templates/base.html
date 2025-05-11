@@ -1,0 +1,35 @@
+{% load static tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{ title }}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google" content="notranslate">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static "css/dist/styles.css" %}?{% now 'U' %}">
+	<style>
+		{% block style %}{% endblock style %}
+	</style>
+</head>
+<body class="font-primary bg-primary text-white" style="font-family: consolas;">
+	<div class="h-14">
+		<nav class="fixed w-screen px-3 flex justify-center py-1 ">
+			<div class="flex  items-center  justify-between w-11/12 ">
+				<a href="{% url "main:home" %}" class="text-white font-logo text-3xl ">MySavings</a>
+				<a href="{% url "account:edit_profile" %}" class="text-xl" >{{ user }}</a>
+			</div>
+		</nav>
+	</div>
+	{% block body %}{% endblock body %}
+	<div class="px-2 md:px-4">
+	</div>
+
+{% block end_body %}{% endblock end_body %}
+
+</body>
+</html>

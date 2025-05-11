@@ -1,0 +1,40 @@
+{% extends "account.html" %}
+
+{% load widget_tweaks %}
+
+{% block body %}
+<div class="bg-gray-800 text-white min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="w-full max-w-md">
+        <div class="mb-6 flex justify-between items-center">
+            <a href="#" class="flex items-center text-3xl font-semibold text-blue-400 hover:text-blue-300 transition gap-5">
+                <svg onclick="history.back()" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#0F6BAE"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
+                Profil
+            </a>
+            <form action="{% url "account:logout" %}" method="POST" >
+                {% csrf_token %}
+                <button class="text-red-600">Logout</button>
+            </form>
+        </div>
+        
+        <form class="space-y-4" method="POST">
+            {% csrf_token %}
+            <div>
+                {{ form.username|add_class:"w-full bg-white text-gray-800 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"|attr:"placeholder:Username" }}
+            </div>
+            
+            <div>
+                 {{ form.email|add_class:"w-full bg-white text-gray-800 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"|attr:"placeholder:Email" }}
+            </div>
+            <a href="{% url "account:change_password" %}" class="text-blue-600 hover:underline relative top-1" >Change password</a>
+            <button 
+                type="submit" 
+                class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded font-medium transition"
+            >
+                Perbarui profil
+            </button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock body %}

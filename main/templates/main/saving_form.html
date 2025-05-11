@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block style %}
+.no-arrow::-webkit-inner-spin-button, 
+.no-arrow::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-arrow {
+  -moz-appearance: textfield;
+}
+{% endblock style %}
+
+{% block body %}
+<div class="container mx-auto min-h-full flex items-center justify-center  p-4">
+    <form class="w-full max-w-2xl bg-transparent text-white space-y-4" method="POST">
+      {% csrf_token %}
+      <h3 class="text-3xl font-semibold text-center">{{ title_template }}</h3>
+      <div>
+        <label class="block text-sm font-semibold mb-" for="id_title">Nama Tabungan</label>
+      
+        {{ form.title|add_class:"w-full px-3 py-2 rounded bg-white text-black placeholder-gray-400 focus:outline-none"|attr:"placeholder:Nama tabungan" }}
+      </div>
+  
+      <div>
+        <label class="block text-sm font-semibold mb-1" for="id_description">Deskripsi (opsional)</label>
+        {{ form.description|add_class:"w-full h-28 px-3 py-2 rounded bg-white text-black placeholder-gray-400 focus:outline-none"|attr:"placeholder:Deskripsi (max 220)" }}
+      </div>
+  
+      <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+        <div class="flex-1">
+          <label class="block text-sm font-semibold mb-1 " for="id_target">Target</label>
+          {{ form.target|add_class:"no-arrow nominal w-full px-3 py-2 rounded bg-white text-black placeholder-gray-400 focus:outline-none"|attr:"placeholder:10.000.000"}}
+        </div>
+        {% if title_template != 'Edit tabungan' %}
+          <div class="flex-1">
+            <label class="block text-sm font-semibold mb-1" for="id_collected">Terkumpul (opsional)</label>
+            {{ form.collected|add_class:"no-arrow nominal w-full px-3 py-2 rounded bg-white text-black placeholder-gray-400 focus:outline-none"|attr:"placeholder:100.000" }}
+          </div>
+        {% endif %}
+        <div class="flex-1">
+          <label class="block text-sm font-semibold mb-1" for="id_deadline" >Deadline (opsional)</label>
+         
+          {{ form.deadline|add_class:"w-full px-3 py-2 rounded bg-white text-black focus:outline-none"|attr:"type:date" }}
+
+        </div>
+      </div>
+
+      <div class="text-right">
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded transition">{{ button_name }}</button>
+      </div>
+      
+    </form>
+  </div>
+
+{% endblock body %}
+
+
+
+
+
+
+
+
