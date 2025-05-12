@@ -102,11 +102,11 @@ DATABASES = {
         # 'PASSWORD': '',
         # 'PORT': 3306,
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': tmpPostgres.path.replace('/', ''),
-        'USER': tmpPostgres.username,
-        'PASSWORD': tmpPostgres.password,
-        'HOST': tmpPostgres.hostname,
-        'PORT': 5432,
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'oFyiBvqnMSQKnfDRwBSPKflHvmLOchPl',
+        'HOST': 'nozomi.proxy.rlwy.net',
+        'PORT': 53155,
     }
 }
 
